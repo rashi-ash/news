@@ -7,8 +7,10 @@ class homepage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       bottomNavigationBar: CurvedNavigationBar(
-        backgroundColor: Colors.grey,
-        color:Colors.white60,
+        index: 1,
+        height: 50,
+        color: Color(0xffe1e2e3),
+        backgroundColor: Colors.white,
         items: <Widget>[
           Icon(Icons.add, size: 30),
           Icon(Icons.list, size: 30),
@@ -17,6 +19,8 @@ class homepage extends StatelessWidget {
         onTap: (index) {
           //Handle button tap
         },
+        animationCurve: Curves.easeInOut,
+        animationDuration: const Duration(milliseconds: 300),
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -38,27 +42,40 @@ class homepage extends StatelessWidget {
                     bottomRight: Radius.circular(25),
                   ),
                 ),
-                child: Padding(
-                  padding: const EdgeInsets.only(top: 90, left: 30),
-                  child: Text(
-                    'Covid-19 News Update ',
-                    style: TextStyle(
-                      fontSize: 30,
-                      fontWeight: FontWeight.bold,
-                      color: Color(0xff2B4F95),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(top: 90, left: 15),
+                      child: Text(
+                        'Record 929 Covid Deaths In Russia Today',
+                        style: TextStyle(
+                          fontSize: 25,
+                          fontWeight: FontWeight.bold,
+                          color: Color(0xff2B4F95),
+                        ),
+                      ),
                     ),
-                  ),
+                  ],
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.only(top: 70, left: 30),
+                padding: const EdgeInsets.only(top: 70, left: 30,right: 30.0),
                 child: Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+
                   children: const <Widget>[
                     Icon(
                       Icons.menu_rounded,
-                      color: Colors.white,
-                      size: 24.0,
+                      color: Colors.black,
+                      size: 26.0,
+                      semanticLabel: 'Text to announce in accessibility modes',
+                    ),
+                    Icon(
+                      Icons.search,
+                      color: Colors.black,
+                      size: 26.0,
                       semanticLabel: 'Text to announce in accessibility modes',
                     ),
                   ],
@@ -102,35 +119,30 @@ class homepage extends StatelessWidget {
                   children: <Widget>[
 
                     news(
-                      path: 'images/img1.jpg',
-                      path1:"Record 929 Covid Deaths In Russia Today"
+                        path: 'images/img1.jpg',
+                        path1:"Record 929 Covid Deaths In Russia Today"
                     ),
                     news(
-                      path: 'images/img1.jpg',
+                      path: 'images/img2.jpg',
+                      path1: "Classes are reopening on next week ",
                     ),
                     news(
-                      path: 'images/bg.jpg',
+                      path: 'images/img3.jpg',
+                      path1: "Major breach in popular news app!! ACC news",
                     ),
                     news(
-                      path: 'images/img1.jpg',
-                    ),
-                    news(
-                      path: 'images/img1.jpg',
-                    ),
-                    news(
-                      path: 'images/img1.jpg',
-                    ),
-                    news(
-                      path: 'images/img1.jpg',
+                      path: 'images/img4.jpg',
+                      path1: "New Ages of Technolgy!!! Are you ready",
                     ),
                     news(
                       path: 'images/img8.jpg',
+                      path1: "Is third wave of corona on the way!!",
                     ),
                   ],
                 ),
               ),
 
-              
+
             ],
           ),
         ],
