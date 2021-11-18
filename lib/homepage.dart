@@ -2,7 +2,15 @@ import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:news_app/news.dart';
 
-class homepage extends StatelessWidget {
+class homepage extends StatefulWidget {
+  dynamic newsTitles;
+  homepage({this.newsTitles="News"});
+
+  @override
+  State<homepage> createState() => _homepageState();
+}
+
+class _homepageState extends State<homepage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -114,32 +122,27 @@ class homepage extends StatelessWidget {
               Container(
                 //margin: EdgeInsets.symmetric(horizontal: 30.0),
                 height: 270.0,
-                child: ListView(
-                  scrollDirection: Axis.horizontal,
-                  children: <Widget>[
+                child:
+                ListView.builder(itemBuilder: (context, index){
+                  return ListTile(
+                    title: news(
+                      path1: widget.newsTitles["articles"][index]["title"],
+                      path: widget.newsTitles["articles"][index]["urlToImage"],
+                    ),
+                  );
+                }),
 
-                    news(
-                        path: 'images/img1.jpg',
-                        path1:"Record 929 Covid Deaths In Russia Today"
-                    ),
-                    news(
-                      path: 'images/img2.jpg',
-                      path1: "Classes are reopening on next week ",
-                    ),
-                    news(
-                      path: 'images/img3.jpg',
-                      path1: "Major breach in popular news app!! ACC news",
-                    ),
-                    news(
-                      path: 'images/img4.jpg',
-                      path1: "New Ages of Technolgy!!! Are you ready",
-                    ),
-                    news(
-                      path: 'images/img8.jpg',
-                      path1: "Is third wave of corona on the way!!",
-                    ),
-                  ],
-                ),
+                // ListView(
+                //    scrollDirection: Axis.horizontal,
+                //    children: <Widget>[
+                //
+                //      news(
+                //          path: widget.newsTitles["articles"][2]["urlToImage"],
+                //          path1: widget.newsTitles["articles"][2]["titles"],
+                //      ),
+                //
+                //    ],
+                //  ),
               ),
 
 
