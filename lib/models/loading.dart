@@ -36,12 +36,21 @@ class _LoadingScreenState extends State<LoadingScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Center(
-        child: SpinKitCubeGrid(
-          size: 80,
-          color: Colors.red,
-        ),
+    return  Scaffold(
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Center(
+             child: SpinKitFadingGrid(
+              size: 80,
+              color: Colors.red,
+            ),
+          ),
+          SizedBox(height: 20,),
+          Text("Fetching News",style: TextStyle(
+            color: Colors.grey[600],
+          ),)
+        ],
       ),
     );
   }

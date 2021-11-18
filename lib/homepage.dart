@@ -40,7 +40,7 @@ class _homepageState extends State<homepage> {
                 width: MediaQuery.of(context).size.width,
                 decoration: BoxDecoration(
                   image: DecorationImage(
-                    image: AssetImage("images/bg.jpg"),
+                      image:NetworkImage(widget.newsTitles["articles"][0]["urlToImage"] ),
                     fit: BoxFit.fill,
                     colorFilter: new ColorFilter.mode(
                         Colors.black.withOpacity(0.5), BlendMode.dstATop),
@@ -57,7 +57,7 @@ class _homepageState extends State<homepage> {
                     Padding(
                       padding: const EdgeInsets.only(top: 90, left: 15),
                       child: Text(
-                        'Record 929 Covid Deaths In Russia Today',
+                        widget.newsTitles["articles"][0]["title"],
                         style: TextStyle(
                           fontSize: 25,
                           fontWeight: FontWeight.bold,
@@ -123,26 +123,17 @@ class _homepageState extends State<homepage> {
                 //margin: EdgeInsets.symmetric(horizontal: 30.0),
                 height: 270.0,
                 child:
-                ListView.builder(itemBuilder: (context, index){
-                  return ListTile(
-                    title: news(
-                      path1: widget.newsTitles["articles"][index]["title"],
-                      path: widget.newsTitles["articles"][index]["urlToImage"],
-                    ),
-                  );
-                }),
+                ListView(
+                   scrollDirection: Axis.horizontal,
+                   children: <Widget>[
+                  for(int i=1;i<widget.newsTitles["articles"].length;i++)
+                     news(
+                         path: widget.newsTitles["articles"][i]["urlToImage"],
+                         path1: widget.newsTitles["articles"][i]["title"],
+                     ),
 
-                // ListView(
-                //    scrollDirection: Axis.horizontal,
-                //    children: <Widget>[
-                //
-                //      news(
-                //          path: widget.newsTitles["articles"][2]["urlToImage"],
-                //          path1: widget.newsTitles["articles"][2]["titles"],
-                //      ),
-                //
-                //    ],
-                //  ),
+                   ],
+                 ),
               ),
 
 
